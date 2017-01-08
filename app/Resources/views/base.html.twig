@@ -10,6 +10,7 @@
         
         {% block stylesheets %}
             <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         {% endblock %}
         
         {% block javascripts %}
@@ -24,30 +25,63 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    Logo INFOVERITI z lewej strony
+                    <div class="logo" onclick="window.top.location.href='http://www.infoveriti.pl/index.html';"></div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    Pomarańczowy lub inne go koloru pase z napisem "Baza Zamówień Przetargowych"
+                    <div class="zone">Baza Zamówień Przetargowych</div>
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-xs-2">
-                    <a href="" class="btn btn-success btn-xs btn-block">MENU 1</a>
-                    <a href="" class="btn btn-success btn-xs btn-block">MENU 2</a>
-                    <a href="" class="btn btn-success btn-xs btn-block">MENU 3</a>
-                    <a href="" class="btn btn-success btn-xs btn-block">MENU 4</a>
-                    <a href="" class="btn btn-success btn-xs btn-block">MENU 5</a>
-                    <a href="" class="btn btn-success btn-xs btn-block">MENU 6</a>
+                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 1</a>
+                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 2</a>
+                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 3</a>
+                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 4</a>
+                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 5</a>
+                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 6</a>
                 </div>
-                <div class="col-xs-10">
-                    {% block body %}{% endblock %}
+                <div class="col-xs-8">
+                    <div style="border: solid"> Tu będzie liczba znalezionych w Bazie Danych przetargów oraz informacja o filtrze który kreuje tą liczbę</div>
+                </div>
+                <div class="col-xs-2">
+                    Menu klienta <br>
+                    LOGIN: <br>
+                    HASŁO: <br>
+                    <a href="" class="btn btn-default btn-xs btn-block">Logowanie</a>
+                    <a href="" class="btn btn-default btn-xs btn-block">Rejestracja</a>
+                    <a href="" class="btn btn-default btn-xs btn-block">Odnowienie hasła</a>
                 </div>
             </div>
             
+            <div class="row">
+                <div class="col-xs-3">
+                    Tu będzie menu wyszukiwania każda z opcji rozwijana<br>
+                    BRANŻA<br>
+                    PODBRAŻNA<br>
+                    WOJEWÓDZTWO REALIZACJI<br>
+                    WOJEWÓDZTWO ORGANIZATORA<br>
+                    MIESJCOWOŚĆ ORGANIZATORA<br>
+                    DATA PUBLIKACJI<br>
+                </div>
+                <div class="col-xs-7">
+                    {% block body %}<div style="border: solid"> Tu będzie formularz do wyszukiwania</div>{% endblock %}
+                </div>
+            </div>
+                
+            <div class="row">
+                <div class="col-xs-3">
+
+                </div>
+                <div class="col-xs-7">
+                    {% block result %}<div style="border: solid"> Tu będzie wynik wyszukiwania</div>{% endblock %}
+                </div>
+            </div>
         </div>
+                
+        {% block footer %}{% endblock %}
 
     </body>
 </html>

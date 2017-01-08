@@ -1,0 +1,29 @@
+
+
+.logo {
+    height: 41px; 
+    background-image: url('../img/logo.png');
+    background-repeat: no-repeat;
+    background-position: 5px 6px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.zone {
+    width: 100%;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-color: #B0C4DE;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-family: Arial;
+    font-size: 21px;
+    color: white;
+    font-weight: normal;
+    letter-spacing: 1px;
+    vertical-align: middle;
+}
