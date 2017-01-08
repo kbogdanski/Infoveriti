@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>{% block title %}Baza Zamówień Przetargowych{% endblock %}</title>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="Author" content="Kamil Bogdański" />
+        <meta name="Copyright" content="(c) 2017 Kamil Bogdański" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        
+        {% block stylesheets %}
+            <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        {% endblock %}
+        
+        {% block javascripts %}
+            <script src="{{ asset('js/jquery-1.12.4.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        {% endblock %}
+        
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
+    
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
     </body>
 </html>
