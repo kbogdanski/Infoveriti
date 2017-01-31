@@ -13,8 +13,7 @@ class DefaultController extends Controller
      * @Route("/", name="homepage")
      * @Template()
      */
-    public function indexAction(Request $request)
-    {
+    public function indexAction(Request $request) {
         return ;
     }
 }

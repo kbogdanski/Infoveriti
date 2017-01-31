@@ -1,0 +1,421 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 19, 2017, 8:49:17 PM
+    Author     : kbogdanski
+*/
+
+* {
+    margin:0; 
+    padding:0
+}
+
+body {
+    font-family:Arial; 
+    font-size:12px; 
+    line-height:13px; 
+    background:url('images/site_bg.png') top center no-repeat fixed #999999
+}
+
+img {
+    max-width:100%; 
+    height:auto
+}
+
+div {
+    overflow:hidden
+}
+
+a {
+    color:#000; 
+    text-decoration:none
+}
+a:hover, a:active, a:focus {
+    text-decoration:none; 
+    color:#000
+}
+
+input[type=text], input[type=password], textarea {
+    border:1px solid #ddd; 
+    padding:5px
+}
+
+
+.body {
+    /*background:url('images/body_bg.png') repeat; */
+    margin-top:30px; 
+    margin-bottom:30px
+}
+
+.center {
+    width:980px; 
+    display:block; 
+    margin:0 auto; 
+    padding:20px; 
+    background:#fff; 
+    transition:all 1.3s ease 0s; 
+    -moz-transition:all 1.3s ease 0s; 
+    -webkit-transition:all 1.3s ease 0s; 
+    -o-transition:all 1.3s ease 0s; 
+    -ms-transition:all 1.3s ease 0s
+}
+
+.header {
+    
+}
+
+.floatleft {
+    float:left
+}
+
+.floatright {
+    float:right
+}
+
+.logo {
+    margin-top:20px
+}
+
+.top_info {
+    margin-top:0px; 
+    margin-bottom: 20px;
+    width:350px
+}
+
+.top_info ul {
+    list-style:none outside none; 
+    margin:0; 
+    padding:0
+}
+
+.top_info ul li {
+    float:left; 
+    border-right:2px solid #000
+}
+
+.top_info ul li:last-child {
+    border-right:none
+}
+
+.top_info ul li a {
+    color:black; 
+    display:block; 
+    font-size:14px; 
+    padding:0 11px; 
+    line-height:12px
+}
+
+.top_info ul li a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px
+}
+
+.top_info ul li a:hover {
+    text-decoration:none
+}
+
+.info_plus_login {
+    margin-bottom:20px;
+    width: 350px;
+}
+
+.login {
+    width: 60%;
+    margin-left: 30%;
+    margin-right: 10%
+}
+
+.login #login_form {
+
+}
+
+.login #l {
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+.login #p {
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+/*do ostylowanie przyciski Zaloguj i zarejestruj*/
+.login #loginbuttom {
+    background:none repeat scroll 0 0 orange; 
+    border:medium none; 
+    color:#FFF; 
+    font-weight:bold; 
+    padding:4px 20px; 
+    font-size:13px
+}
+
+.login #rejbuttom {
+    background:none repeat scroll 0 0 green; 
+    border:medium none; 
+    color:#FFF; 
+    font-weight:bold; 
+    padding:4px 20px; 
+    font-size:13px
+}
+
+#nav {
+    display:block
+}
+
+#nav li ul {
+    transition:all 0.3s ease 0s; 
+    -moz-transition:all 0.3s ease 0s; 
+    -webkit-transition:all 0.3s ease 0s; 
+    -o-transition:all 0.3s ease 0s; 
+    -ms-transition:all 0.3s ease 0s
+}
+
+.main_menu_area {
+    overflow:visible; 
+    background:#0D0E0F; 
+    min-height:50px
+}
+
+.main_menu_area ul {
+    margin:0; 
+    padding:0; 
+    list-style:none
+}
+
+.main_menu_area ul li {
+    float:left; 
+    position:relative
+}
+
+.main_menu_area ul li a {
+    color:#FFF; 
+    display:block; 
+    font-family:'bebasregular'; 
+    font-size:15px; 
+    padding:18px 18.7px
+}
+
+.main_menu_area ul li a:hover {
+    background: orange
+}
+
+/* dropdown css level one*/
+.main_menu_area ul li ul {
+    background:none repeat scroll 0 0 #0D0E0F; 
+    top:100px; 
+    position:absolute; 
+    width:215px; 
+    z-index:99999; 
+    right:-99999px
+}
+
+.main_menu_area ul li ul li {
+    float:none; 
+    position:relative
+}
+
+.main_menu_area ul >li:hover >ul {
+    left:0px; 
+    top:49px
+}
+
+.main_menu_area ul li ul li a {
+    font-family:arial; 
+    font-weight:bold
+}
+
+.main_menu_area ul li ul li a:hover {
+    
+}
+
+/* dropdown css level two*/
+.main_menu_area ul li ul li ul {
+    background:none repeat scroll 0 0 #0D0E0F; 
+    right:215px; 
+    position:absolute; 
+    width:215px; 
+    z-index:99999; 
+    right:-99999px
+}
+
+.main_menu_area ul li ul li ul li {
+    float:none
+}
+
+.main_menu_area ul li ul li:hover ul {
+    left:215px !important; 
+    top:0px
+}
+
+.main_menu_area ul li ul li ul li a {
+    font-family:arial; 
+    font-weight:bold
+}
+
+#selectnav1 {
+    display:none
+}
+
+#selectnav2 {
+    display:none
+}
+
+.bxslider, .bx-viewport, .bx-controls, .bx-pager, .bx-controls-direction {
+    overflow:visible
+}
+
+.slider { 
+    height:350px; 
+    overflow:visible
+}
+
+.slider_area, .slider {
+    display:block; 
+    position:relative; 
+    width:100%; 
+    margin:0; 
+    padding:0;
+}
+
+.slider * {
+    margin:0; 
+    padding:0;
+}
+
+.slider img {
+    max-width:100%;
+}
+
+.slider1 {
+    width:670px
+}
+
+.slider2 {
+    width:250px
+}
+
+.content {
+    margin-top:25px
+}
+
+.search_form {
+    padding:10px; 
+    background:#E4E4E4;
+    margin-bottom: 10px
+}
+
+.search_form h2 {
+    font-size:20px; 
+    margin-bottom:5px; 
+    word-spacing:2px
+}
+
+.search_form p {
+    
+}
+
+.search_form form input {
+    border:1px solid #999; 
+    margin-bottom:10px; 
+    width:45%
+}
+
+.search_form form input#search_buttom {
+    background:url("images/search.png") no-repeat scroll 0 0 rgba(0,0,0,0); 
+    border:medium none; 
+    height:28px; 
+    margin-left:-4px; 
+    text-indent:-99999px; 
+    width:5%
+}
+
+
+.main_content {
+    width:670px
+}
+
+
+
+.sidebar {
+    width:250px
+}
+
+.single_sidebar {
+    margin-bottom:20px;
+}
+
+.box {
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 17px 17px 10px;
+    margin-bottom: 10px;
+    margin-right:10px;
+    box-shadow: 5px 5px 2px 1px;
+    -moz-box-shadow: 5px 5px 2px 1px;
+    -webkit-box-shadow: 5px 5px 2px 1px;
+}
+
+.title {
+    border-bottom:4px solid orange; 
+    /*font-family:'bebasregular'; */
+    font-size:20px; 
+    word-spacing:2px
+}
+
+.footer_top_area {
+    border-bottom:1px dotted #000; 
+    border-top:1px dotted #000; 
+    padding:20px 0; 
+    width:940px
+}
+
+.inner_footer_top {
+    width:730px; 
+    margin:0 auto
+}
+
+.footer_bottom_area {
+    margin-top:15px
+}
+
+.footer_menu {
+    margin-bottom:20px
+}
+
+.footer_menu ul {
+    margin:0; 
+    padding:0; 
+    list-style:none
+}
+
+.footer_menu ul li {
+    border-right:1px solid #000; 
+    display:inline
+}
+
+.footer_menu ul li:last-child {
+    border-right:none
+}
+
+.footer_menu ul li a {
+    display:inline-block; 
+    padding:0 22px
+}
+
+.footer_menu ul li a:hover {
+    
+}
+
+#f_menu {
+    display:block;
+    text-align: center
+}
+
+.copyright_text {
+    line-height:17px; 
+    text-align:center
+}

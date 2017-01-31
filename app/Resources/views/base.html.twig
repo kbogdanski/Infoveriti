@@ -2,86 +2,268 @@
 <html>
     <head>
         <title>{% block title %}Baza Zamówień Przetargowych{% endblock %}</title>
-        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="Author" content="Kamil Bogdański" />
         <meta name="Copyright" content="(c) 2017 Kamil Bogdański" />
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         
-        {% block stylesheets %}
-            <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-            <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        {% block stylesheets %}       
+            <link rel="stylesheet" type="text/css" href="{{ asset('font/font-awesome.min.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('font/font.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.bxslider.css') }}" />
+
         {% endblock %}
         
-        {% block javascripts %}
-            <script src="{{ asset('js/jquery-1.12.4.min.js') }}"></script>
-            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        {% block javascripts %}          
+            <script type="text/javascript" src="{{ asset('js/jquery-min.js') }}"></script> 
+            <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script> 
+            <script type="text/javascript" src="{{ asset('js/jquery.bxslider.js') }}"></script> 
+            <script type="text/javascript" src="{{ asset('js/selectnav.min.js') }}"></script> 
         {% endblock %}
         
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="logo" onclick="window.top.location.href='http://www.infoveriti.pl/index.html';"></div>
+        <div class="body">
+            <div class="center">
+                <div class="header">
+                    <div class="logo floatleft">
+                        <a href=""><img src="img/logo.png" /></a>
+                    </div>
+                    <div class="info_plus_login floatright">
+                        <div class="top_info">
+                            <ul>
+                                <li><a><img src="img/tel.png" /><strong>111 111 111</strong></a></li>
+                                <li><a><img src="img/mail.png" /><strong>test@test.pl</strong></a></li>
+                                <li><a><img src="img/info.png" /><strong>Pomoc</strong></a></li>
+                            </ul>
+                        </div>
+                        <div class="login">
+                          <form action="#" method="post" id="login_form">
+                            <input type="text" placeholder="Podaj login" id="l" />
+                            <input type="text" placeholder="Podaj hasło" id="p" />
+                            <input type="submit" id="loginbuttom" value="Zaloguj" />
+                            <input type="button" id="rejbuttom" value="Zarejestruj" />
+                            <input type="checkbox" value="true" />Zapamiętaj mnie
+                            <input type="hidden" value="post" name="post_type" />
+                          </form>
+                        <div>
+                            <a>Zapomniałem hasła</a>
+                        </div>
+                        </div>
+                    </div> 
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="zone">Baza Zamówień Przetargowych</div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-xs-2">
-                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 1</a>
-                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 2</a>
-                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 3</a>
-                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 4</a>
-                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 5</a>
-                    <a href="" class="btn btn-primary btn-xs btn-block">MENU 6</a>
-                </div>
-                <div class="col-xs-8">
-                    <div style="border: solid"> Tu będzie liczba znalezionych w Bazie Danych przetargów oraz informacja o filtrze który kreuje tą liczbę</div>
-                </div>
-                <div class="col-xs-2">
-                    Menu klienta <br>
-                    LOGIN: <br>
-                    HASŁO: <br>
-                    <a href="" class="btn btn-default btn-xs btn-block">Logowanie</a>
-                    <a href="" class="btn btn-default btn-xs btn-block">Rejestracja</a>
-                    <a href="" class="btn btn-default btn-xs btn-block">Odnowienie hasła</a>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-xs-3">
-                    Tu będzie menu wyszukiwania każda z opcji rozwijana<br>
-                    BRANŻA<br>
-                    PODBRAŻNA<br>
-                    WOJEWÓDZTWO REALIZACJI<br>
-                    WOJEWÓDZTWO ORGANIZATORA<br>
-                    MIESJCOWOŚĆ ORGANIZATORA<br>
-                    DATA PUBLIKACJI<br>
-                </div>
-                <div class="col-xs-7">
-                    {% block body %}<div style="border: solid"> Tu będzie formularz do wyszukiwania</div>{% endblock %}
-                </div>
-            </div>
                 
-            <div class="row">
-                <div class="col-xs-3">
-
+                <div class="main_menu_area">
+                    <ul id="nav">
+                      <li><a href="#">HOME</a></li>
+                      <li><a href="#">Menu 1</a></li>
+                      <li><a href="#">Menu 2</a>
+                        <ul>
+                          <li><a href="#">Menu 2.1</a></li>
+                          <li><a href="#">Menu 2.2</a></li>
+                          <li><a href="#">Menu 2.3</a></li>
+                          <li><a href="#">Menu 2.4</a></li>
+                          <li><a href="#">Menu 2.5</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">Menu 3</a></li>
+                      <li><a href="#">Menu 4</a>
+                        <ul>
+                          <li><a href="#">Menu 4.1</a></li>
+                          <li><a href="#">Menu 4.2</a></li>
+                          <li><a href="#">Menu 4.3</a>
+                            <ul>
+                              <li><a href="#">Menu 4.3.1</a></li>
+                              <li><a href="#">Menu 4.3.2</a></li>
+                              <li><a href="#">Menu 4.3.3</a></li>
+                              <li><a href="#">Menu 4.3.4</a></li>
+                              <li><a href="#">Menu 4.3.5</a></li>
+                            </ul>
+                          </li>
+                          <li><a href="#">Menu 4.4</a></li>
+                          <li><a href="#">Menu 4.5</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">Menu 5</a></li>
+                      <li><a href="#">Menu 6</a></li>
+                      <li><a href="#">Menu 7</a></li>
+                      <li><a href="#">Menu 8</a></li>
+                    </ul>
                 </div>
-                <div class="col-xs-7">
-                    {% block result %}<div style="border: solid"> Tu będzie wynik wyszukiwania</div>{% endblock %}
+                
+                <div class="slider_area">
+                    <div class="slider">
+                      <ul class="bxslider">
+                        <li><img src="img/1.jpg" alt="" title="Slider caption text" /></li>
+                        <li><img src="img/2.jpg" alt="" title="Slider caption text" /></li>
+                        <li><img src="img/3.jpg" alt="" title="Slider caption text" /></li>
+                      </ul>
+                    </div>
                 </div>
+                
+                <div class="content">
+                    <div class="search_form">
+                        <h2>Baza Zamówień Przetargowych</h2>
+                        <p>Skorzystaj z wyszukiwarki</p>
+                        <form action="#" method="post">
+                          <input type="text" placeholder="Słowa kluczowe np. gazownictwo" />
+                          <input type="text" placeholder="Lokalizacja miasto/powiat/województwo" />
+                          <input type="submit" value="SUBMIT" id="search_buttom" />
+                        </form>
+                        <p><a>Wyszukiwanie zaawansowane</a></p>
+                    </div>
+                    
+                    <div class="main_content floatright">
+                        <h2>Tablica z wynikami</h2>
+                        <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Kolumna 1</th>
+                              <th>Kolumna 2</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>Dane</td>
+                              <td>Dane Dane Dane </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Dane</td>
+                              <td>Dane Dane Dane</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Dane</td>
+                              <td>Dane Dane Dane </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>Dane</td>
+                              <td>Dane Dane Dane</td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td>Dane</td>
+                              <td>Dane Dane Dane </td>
+                            </tr>
+                            <tr>
+                              <td>6</td>
+                              <td>Dane</td>
+                              <td>Dane Dane Dane</td>
+                            </tr>
+                            <tr>
+                              <td>7</td>
+                              <td>Dane</td>
+                              <td>Dane Dane Dane </td>
+                            </tr>
+                            <tr>
+                              <td>8</td>
+                              <td>Dane</td>
+                              <td>Dane Dane Dane</td>
+                            </tr>
+                            <tr>
+                              <td>9</td>
+                              <td>Dane</td>
+                              <td>Dane Dane Dane </td>
+                            </tr>
+                            <tr>
+                              <td>10</td>
+                              <td>Dane</td>
+                              <td>Dane Dane Dane</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar floatleft">
+                        <div class="single_sidebar">
+                            <div class="box">
+                                <h2 class="title">Statystyki</h2>
+                                <p>Dziś dodane</p>
+                                <p>Aktualne</p>
+                                <p>Wszystkie</p>
+                            </div>
+                        </div>
+                        <div class="single_sidebar">
+                            <div class="box">
+                                <h2 class="title">Skontaktuj się z nami</h2>
+                                <p>Telefon</p>
+                                <p>Email</p>
+                                <p>Adres</p>
+                            </div>
+                        </div>
+                        <div class="single_sidebar">
+                            <div class="box">
+                                <h2 class="title">Nowości</h2>
+                                <p>Nowość 1</p>
+                                <p>Nowość 1</p>
+                                <p>Nowość 1</p>
+                            </div>
+                        </div>
+                        <div class="single_sidebar">
+                            <div class="box">
+                                <h2 class="title">Poradniki</h2>
+                                <p>Poradnik 1</p>
+                                <p>Poradnik 1</p>
+                                <p>Poradnik 1</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="footer_top_area">
+                        <div class="inner_footer_top"> <img src="img/infoveriti_banner.png" alt="" /> </div>
+                    </div>
+                    
+                    <div class="footer_bottom_area">
+                        <div class="footer_menu">
+                          <ul id="f_menu">
+                            <li><a href="#">Menu 1</a></li>
+                            <li><a href="#">Menu 2</a></li>
+                            <li><a href="#">Menu 3</a></li>
+                            <li><a href="#">Menu 4</a></li>
+                            <li><a href="#">Menu 5</a></li>
+                            <li><a href="#">Menu 6</a></li>
+                            <li><a href="#">Menu 7</a></li>
+                            <li><a href="#">Menu 8</a></li>
+                          </ul>
+                        </div>
+                        <div class="copyright_text">
+                          <p>Można umieścić jakiś tekst</p>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
-                
-        {% block footer %}{% endblock %}
-
+        
+        <script type="text/javascript">
+            selectnav('nav', {
+                label: '-Navigation-',
+                nested: true,
+                indent: '-'
+            });
+            selectnav('f_menu', {
+                label: '-Navigation-',
+                nested: true,
+                indent: '-'
+            });
+            $('.bxslider').bxSlider({
+                mode: 'fade',
+                auto: true,
+                captions: true
+            });
+        </script>
     </body>
 </html>
