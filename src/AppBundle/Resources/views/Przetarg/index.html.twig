@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block main_content %}
+    {# {{ dump(przetargi) }} #}
+    
+    <h2>Tablica z wynikami</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Data publikacji</th>
+                  <th>Województwo</th>
+                  <th>Zamawiający</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for przetarg in przetargi %}
+                    <tr>
+                        <td><a href="">{{ przetarg.id }}</a></td>
+                        <td>{{ przetarg.dataPublikacji | date("d-m-Y") }}</td>
+                        <td>{{ przetarg.wojewodztwo }}</td>
+                        <td>{{ przetarg.nazwa | slice(0, 30) }}...</td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pager">
+                {% if page <= 1 %}
+                    <li class="previous"><a href="{{ path('homepage') }}">&larr; Poprzednia</a></li>
+                {% else %}
+                    <li class="previous"><a href="{{ path('homepage') }}?page={{ page-1 }}">&larr; Poprzednia</a></li>
+                {%endif%}
+                
+                Strona: {{page+1}}
+                
+                {% if page == allPages-1 %}
+                    <li class="next"><a href="{{ path('homepage') }}?page={{ allPages-1 }}">Następna &rarr;</a></li>
+                {% else %}
+                    <li class="next"><a href="{{ path('homepage') }}?page={{ page+1 }}">Następna &rarr;</a></li>
+                {%endif%}
+            </ul>
+        </nav>
+    </div>
+    
+{% endblock %}
