@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\Przetargi;
+
 
 class PrzetargController extends Controller
 {
@@ -34,5 +34,19 @@ class PrzetargController extends Controller
         $przetargiToDisplay = $pagination[$page];
         
         return array('przetargi' => $przetargiToDisplay, 'allPages' => $allPages, 'page' => $page) ;
+    }
+    
+    /**
+     * @Route("/przetarg/{id}", requirements={"id"="\d+"})
+     * @Template()
+     */
+    public function przetargAction ($id) {
+        $repPrzetargi = $this->getDoctrine()->getRepository('AppBundle:Przetargi');
+        $przetarg = $repPrzetargi->find($id);
+        
+        $repPrzetargiExtrasShortkrs = $this->getDoctrine()->getRepository('AppBundle:PrzetargiExtrasShortkrs');
+        $przetarExtrasShortkrs = $repPrzetargiExtrasShortkrs->find($id);
+        
+        return array('przetarg' => $przetarg, 'przetargExtrasShortkrs' => $przetarExtrasShortkrs);
     }
 }

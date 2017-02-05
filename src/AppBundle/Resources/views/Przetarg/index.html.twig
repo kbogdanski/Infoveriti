@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block main_content %}
-    {# {{ dump(przetargi) }} #}
     
     <h2>Tablica z wynikami</h2>
     <div class="table-responsive">
@@ -17,7 +16,7 @@
             <tbody>
                 {% for przetarg in przetargi %}
                     <tr>
-                        <td><a href="">{{ przetarg.id }}</a></td>
+                        <td><a href="{{ url('app_przetarg_przetarg', {'id': przetarg.id}) }}">{{ przetarg.id }}</a></td>
                         <td>{{ przetarg.dataPublikacji | date("d-m-Y") }}</td>
                         <td>{{ przetarg.wojewodztwo }}</td>
                         <td>{{ przetarg.nazwa | slice(0, 30) }}...</td>

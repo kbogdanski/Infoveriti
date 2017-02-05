@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block main_content %}
+
+    <h4>Pełna treść ogłoszenia dostępna tylko dla zalogowanych użytkowników</h4>
+    
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+              <td>Numer ogłoszenia</td>
+              <td>{{ przetarg.id }}</td>
+            </tr>
+            <tr>
+              <td>Data publikacji</td>
+              <td>{{ przetarg.dataPublikacji | date("d-m-Y") }}</td>
+            </tr>
+            <tr>
+              <td>Nazwa Zamówienia</td>
+              <td>{{ przetargExtrasShortkrs.nazwaZamowienia }}</td>
+            </tr>
+            <tr>
+              <td>Województwo</td>
+              <td>{{ przetarg.wojewodztwo }}</td>
+            </tr>
+            <tr>
+              <td>Rodzaj Zamówienia</td>
+              <td>{{ przetargExtrasShortkrs.rodzajZam }}</td>
+            </tr>
+            <tr>
+              <td>Typ</td>
+              <td>{{ przetargExtrasShortkrs.rodzZam }}</td>
+            </tr>
+            <tr>
+              <td>Zamawiający</td>
+              <td>{{ przetarg.nazwa }}</td>
+            </tr>
+        </tbody>
+    </table>
+            
+    <a href="{{ path('homepage') }}">Cofnij</a>
+           
+{% endblock %}
