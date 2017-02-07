@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-
+use AppBundle\Form\Type\SimpleSearchType;
 
 class PrzetargController extends Controller
 {
@@ -33,7 +33,10 @@ class PrzetargController extends Controller
         
         $przetargiToDisplay = $pagination[$page];
         
-        return array('przetargi' => $przetargiToDisplay, 'allPages' => $allPages, 'page' => $page) ;
+        $form = $this->createForm(new SimpleSearchType());
+        $form->handleRequest($req);
+        
+        return array('przetargi' => $przetargiToDisplay, 'allPages' => $allPages, 'page' => $page, 'form' => $form->createView()) ;
     }
     
     /**
