@@ -36,20 +36,41 @@ class PrzetargController extends Controller
         $form = $this->createForm(new SimpleSearchType());
         $form->handleRequest($req);
         
+        if ($req->getMethod() === 'POST') {
+            if ($form->isSubmitted() && $form->isValid()) {
+                
+                return $this->redirectToRoute('app_przetarg_simplesearch');
+            }
+        }
+        
         return array('przetargi' => $przetargiToDisplay, 'allPages' => $allPages, 'page' => $page, 'form' => $form->createView()) ;
     }
     
     /**
+     * @Route("/wyszukiwarka")
+     * @Template()
+     */
+    public function simpleSearchAction(Request $req) {
+        $form = $this->createForm(new SimpleSearchType());
+        $form->handleRequest($req);
+        
+        return array('form' => $form->createView());
+    }
+
+    /**
      * @Route("/przetarg/{id}", requirements={"id"="\d+"})
      * @Template()
      */
-    public function przetargAction ($id) {
+    public function przetargAction (Request $req, $id) {
         $repPrzetargi = $this->getDoctrine()->getRepository('AppBundle:Przetargi');
         $przetarg = $repPrzetargi->find($id);
         
         $repPrzetargiExtrasShortkrs = $this->getDoctrine()->getRepository('AppBundle:PrzetargiExtrasShortkrs');
         $przetarExtrasShortkrs = $repPrzetargiExtrasShortkrs->find($id);
         
-        return array('przetarg' => $przetarg, 'przetargExtrasShortkrs' => $przetarExtrasShortkrs);
+        $form = $this->createForm(new SimpleSearchType());
+        $form->handleRequest($req);
+        
+        return array('przetarg' => $przetarg, 'przetargExtrasShortkrs' => $przetarExtrasShortkrs, 'form' => $form->createView());
     }
 }
