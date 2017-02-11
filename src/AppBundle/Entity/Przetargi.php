@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Przetargi
  *
  * @ORM\Table(name="przetargi", indexes={@ORM\Index(name="przetargi_idx1", columns={"zp"}), @ORM\Index(name="przetargi_idx2", columns={"regon9"}), @ORM\Index(name="przetargi_idx3", columns={"regon"}), @ORM\Index(name="przetargi_idx4", columns={"data_publikacji"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\PrzetargiRepository")
  */
 class Przetargi
 {
