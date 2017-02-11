@@ -103,7 +103,7 @@ input[type=text], input[type=password], textarea {
 .top_info ul li a {
     color:black; 
     display:block; 
-    font-size:14px; 
+    font-size:12px; 
     padding:0 11px; 
     line-height:12px
 }
