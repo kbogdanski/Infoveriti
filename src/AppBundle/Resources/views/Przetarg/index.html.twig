@@ -1,5 +1,18 @@
 {% extends 'base.html.twig' %}
 
+{% block search_form %}
+    <div class="search_form">
+        <h2>Baza Zamówień Przetargowych</h2>
+        <p>Skorzystaj z wyszukiwarki</p>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
+            {{ form_widget(form.keyWord, { 'attr': { 'placeholder' : 'Słowa kluczowe np. gazownictwo' } }) }}
+            {{ form_widget(form.location, { 'attr': { 'placeholder' : 'Lokalizacja miasto/powiat/województwo' } }) }}
+            {{ form_widget(form.search_buttom) }}
+        {{ form_end(form) }}
+        <p><a>Wyszukiwanie zaawansowane</a></p> 
+    </div>
+{% endblock %}
+
 {% block main_content %}
     
     <h2>Tablica z wynikami</h2>
