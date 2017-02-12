@@ -37,23 +37,25 @@
                 {%endfor%}
             </tbody>
         </table>
-        <nav>
-            <ul class="pager">
-                {% if page <= 1 %}
-                    <li class="previous"><a href="{{ path('homepage') }}">&larr; Poprzednia</a></li>
-                {% else %}
-                    <li class="previous"><a href="{{ path('homepage') }}?page={{ page-1 }}">&larr; Poprzednia</a></li>
-                {%endif%}
-                
-                Strona: {{page+1}}
-                
-                {% if page == allPages-1 %}
-                    <li class="next"><a href="{{ path('homepage') }}?page={{ allPages-1 }}">Następna &rarr;</a></li>
-                {% else %}
-                    <li class="next"><a href="{{ path('homepage') }}?page={{ page+1 }}">Następna &rarr;</a></li>
-                {%endif%}
-            </ul>
-        </nav>
+        {% if pagination == 1 %}
+            <nav>
+                <ul class="pager">
+                    {% if page <= 1 %}
+                        <li class="previous"><a href="{{ path('homepage') }}">&larr; Poprzednia</a></li>
+                    {% else %}
+                        <li class="previous"><a href="{{ path('homepage') }}?page={{ page-1 }}">&larr; Poprzednia</a></li>
+                    {%endif%}
+
+                    Strona: {{page+1}}
+
+                    {% if page == allPages-1 %}
+                        <li class="next"><a href="{{ path('homepage') }}?page={{ allPages-1 }}">Następna &rarr;</a></li>
+                    {% else %}
+                        <li class="next"><a href="{{ path('homepage') }}?page={{ page+1 }}">Następna &rarr;</a></li>
+                    {%endif%}
+                </ul>
+            </nav>
+        {% endif %}
     </div>
     
 {% endblock %}

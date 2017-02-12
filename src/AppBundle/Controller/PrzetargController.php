@@ -36,7 +36,7 @@ class PrzetargController extends Controller
 
             $form = $this->createForm(new SimpleSearchType());
             //$form->handleRequest($req);
-            return array('przetargi' => $przetargiToDisplay, 'allPages' => $allPages, 'page' => $page, 'form' => $form->createView()) ;
+            return array('przetargi' => $przetargiToDisplay, 'pagination' => 1, 'allPages' => $allPages, 'page' => $page, 'form' => $form->createView()) ;
         }
         
         if ($req->getMethod() === 'POST') {
@@ -52,15 +52,15 @@ class PrzetargController extends Controller
                 if ($dataForm['keyWord'] !== NULL && $dataForm['location'] !== NULL) {
                     $przetargiByKeyWordAndLocation = $this->getAuctiongByKeyWordAndLocation($dataForm['keyWord'], $dataForm['location']);
                     //var_dump($przetargiByKeyWordAndLocation);
-                    return array('przetargi' => $przetargiByKeyWordAndLocation, 'allPages' => $allPages, 'page' => $page, 'form' => $form->createView());
+                    return array('przetargi' => $przetargiByKeyWordAndLocation, 'pagination' => 0, 'allPages' => $allPages, 'page' => $page, 'form' => $form->createView());
                 } else {
                     if ($dataForm['location'] !== NULL) {
                         $przetargiByLocation = $this->getAuctiongByLocation($dataForm['location']);
-                        return array('przetargi' => $przetargiByLocation, 'allPages' => $allPages, 'page' => $page, 'form' => $form->createView());
+                        return array('przetargi' => $przetargiByLocation, 'pagination' => 0, 'allPages' => $allPages, 'page' => $page, 'form' => $form->createView());
                     }
                     if ($dataForm['keyWord'] !== NULL) {
                         $przetargiByKeyWord = $this->getAuctiongByKeyWord($dataForm['keyWord']);
-                        return array('przetargi' => $przetargiByKeyWord, 'allPages' => $allPages, 'page' => $page, 'form' => $form->createView());
+                        return array('przetargi' => $przetargiByKeyWord, 'allPages' => $allPages, 'pagination' => 0, 'page' => $page, 'form' => $form->createView());
                     }
                 }
                 return $this->redirectToRoute('homepage');
@@ -130,7 +130,7 @@ class PrzetargController extends Controller
         $resultByKeyWord = $repPrzetargiExtrasShortkrs->createQueryBuilder('p')
             ->add('where', 'MATCH_AGAINST(p.nazwaZamowienia, p.przedmiotZam, p.rodzajZam, :searchterm) > 0.8')
             ->setParameter('searchterm', "$keyWord")
-            //->orderBy('p.dataPublikacji', 'DESC')
+            ->orderBy('MATCH_AGAINST(p.nazwaZamowienia, p.przedmiotZam, p.rodzajZam, :searchterm)', 'DESC')
             ->getQuery()
             ->getResult();
         $result = [];
@@ -147,7 +147,7 @@ class PrzetargController extends Controller
         $resultByKeyWord = $repPrzetargiExtrasShortkrs->createQueryBuilder('p')
             ->add('where', 'MATCH_AGAINST(p.nazwaZamowienia, p.przedmiotZam, p.rodzajZam, :searchterm) > 0.8')
             ->setParameter('searchterm', "$keyWord")
-            //->orderBy('p.dataPublikacji', 'DESC')
+            ->orderBy('MATCH_AGAINST(p.nazwaZamowienia, p.przedmiotZam, p.rodzajZam, :searchterm)', 'DESC')
             ->getQuery()
             ->getResult();
         $result = [];
