@@ -12,18 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class PrzetargiRepository extends EntityRepository {
     
-    public function getAuctiongByLocation($location) {
-        $em = $this->getEntityManager();      
-        $result = $em->createQueryBuilder('p')
-            ->addSelect("MATCH_AGAINST (p.miejscowosc, p.wojewodztwo, :searchterm 'IN NATURAL MODE') as score")
-            ->add('where', 'MATCH_AGAINST(p.miejscowosc, p.wojewodztwo, :searchterm) > 0.8')
-            ->setParameter('searchterm', "$location")
-            ->orderBy('score', 'desc')
-            ->getQuery()
-            ->getResult();
-        
-        return $result;
+    public function getByLocation($id, $location) {
+        $query = $this->getEntityManager()->createQuery(
+            "SELECT p
+            FROM AppBundle:Przetargi p WHERE
+            p.id = $id AND (p.miejscowosc LIKE '$location' OR p.wojewodztwo LIKE '$location')"
+        );
+        return $query->getResult();
     }
+    
     
     
 }
