@@ -9,7 +9,7 @@
             {{ form_widget(form.location, { 'attr': { 'placeholder' : 'Lokalizacja miasto/powiat/województwo' } }) }}
             {{ form_widget(form.search_buttom) }}
         {{ form_end(form) }}
-        <p><a>Wyszukiwanie zaawansowane</a></p> 
+        <p><a href="{{ url('app_przetarg_search') }}">Wyszukiwanie zaawansowane</a></p> 
     </div>
 {% endblock %}
 

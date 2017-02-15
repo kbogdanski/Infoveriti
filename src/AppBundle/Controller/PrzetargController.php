@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\Type\SimpleSearchType;
+use AppBundle\Form\Type\AdvancedSearchType;
 
 class PrzetargController extends Controller
 {
@@ -73,21 +74,11 @@ class PrzetargController extends Controller
      * @Route("/wyszukiwarka")
      * @Template()
      */
-    public function simpleSearchAction(Request $req) {
-        $form = $this->createForm(new SimpleSearchType());
-        $form->handleRequest($req);
-        $task = $form->getData();
-        
-        if ($form->isSubmitted()) {
-            $task = $form->getData();
-            
-            return array('form' => $form->createView(), 'result' => $task);
-        }
+    public function searchAction(Request $req) {
+        //$task = $form->getData();
 
-        $rep = $this->getDoctrine()->getRepository('AppBundle:Przetargi');
-        $result = $this->getAuctiongByLocation('warszawa');
         
-        return array('form' => $form->createView(), 'result' => $result);
+        return array();
     }
     
 

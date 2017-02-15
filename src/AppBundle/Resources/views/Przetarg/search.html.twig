@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block main_content %}
+    
+    <h2>Wyszukiwarka</h2>
+    <hr>
+    <form action="">
+        <fieldset>
+            <span>Zakres wyszukiwania: </span>
+                <input checked type="radio" name="range" value="1"/>Przetargi aktualne
+                <input type="radio" name="range" value="0"/>Przetargi zakończone
+        </fieldset>
+        <hr>
+        <fieldset>
+            <p>Podstawowe</p>
+            <label>ID przetargu: </label>
+            <input type="text" />
+            <br>
+            <label>Słowa kluczowe: </label>
+            <input type="text" />
+            <br>
+            <label>Miasto: </label>
+            <input type="text" />
+            <label>Organizator: </label>
+            <input type="text" />
+        </fieldset>
+        <hr>
+        <fieldset>
+            <p>Zasięg terytorialny</p>
+            <label>Województwo: </label>
+            <select name="wojewodztwo">
+                <option selected="selected">-- wybierz --</option>
+                <option>dolnośląskie</option>
+                <option>kujawsko-pomorskie</option>
+                <option>lubelskie</option>
+                <option>lubuskie</option>
+            </select>
+        </fieldset>
+        <hr>
+        <fieldset>
+            <p>Branże (możesz wybrać kilka)</p>
+            <label>Branża: </label>
+            <select name="branches">
+                <option selected="selected">-- wybierz --</option>
+                <option>administrowanie obiektami/lokalami</option>
+                <option>artykuły biurowe osprzęt biurowy</option>
+                <option>artykuły gospodarstwa domowego</option>
+                <option>artykuły spożywcze</option>
+            </select>
+            <br>
+            <label>Podbranża: </label>
+            <select name="subbranches">
+                <option selected="selected">-- wybierz --</option>
+            </select>
+        </fieldset>
+        <hr>
+        <fieldset>
+            <p>Inne</p>
+            <label>Kod CPV: </label>
+            <input type="text" />
+            <br>
+            <label>Daya dodania od: </label>
+            <input type="date" name="" value="" />
+            <label>do: </label>
+            <input type="date" name="" value="" />
+        </fieldset>
+        
+
+    </form>
+    
+{% endblock%}
