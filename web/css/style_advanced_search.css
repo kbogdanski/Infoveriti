@@ -1,0 +1,80 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 16, 2017, 8:00:11 PM
+    Author     : kbogdanski
+*/
+
+.breadcrumbs {
+    padding-bottom: 16px;
+    font-size: 10px
+}
+
+.breadcrumbs a {
+    color: #20587b;
+    text-decoration: none
+}
+
+.breadcrumbs span {
+    color: #c71414;
+}
+
+#advanced_search label {
+    width: 140px;
+    font-size: 12px;
+    text-align: right;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+#advanced_search strong {
+    font-size: 12px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+#advanced_search a {
+    text-decoration: none
+}
+
+#advanced_search .buttons {
+    margin-top: 5px;
+    text-align: center;
+}
+
+#advanced_search .actions {
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    float: none;
+}
+
+#advanced_search p.legends {
+    color: darkorange;
+    font-weight: bold;
+    padding: 5px 0px;
+    margin-left: 20px
+}
+
+#advanced_search input[type=radio] {
+    margin: 5px;
+}
+
+#advanced_search input[type=text] {
+    padding: 0px;
+}
+
+#advanced_search textarea {
+    padding: 0px;
+    resize: none;
+    width: 509px;
+}
+
+#advanced_search select[multiple] {
+    margin-left: 140px;
+    height: 100px;
+    width: 400px;
+}

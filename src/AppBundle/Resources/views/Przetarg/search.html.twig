@@ -1,32 +1,49 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %} 
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style_advanced_search.css') }}" />
+{% endblock %}
+
 {% block main_content %}
     
-    <h2>Wyszukiwarka</h2>
-    <hr>
-    <form action="">
-        <fieldset>
-            <span>Zakres wyszukiwania: </span>
+    <div class="breadcrumbs">
+        <a href="{{ path('homepage') }}">Strona główna</a>
+        <span>/</span>
+        Wyszukiwarka
+    </div>
+    <h4>Wyszukiwarka</h4>
+    <p class="title"></p>
+    
+    <form id="advanced_search" action="" method="post">
+        <fieldset class="search_type">
+            <label>Zakres wyszukiwania:</label>
                 <input checked type="radio" name="range" value="1"/>Przetargi aktualne
                 <input type="radio" name="range" value="0"/>Przetargi zakończone
         </fieldset>
+        
         <hr>
+        
         <fieldset>
-            <p>Podstawowe</p>
+            <p class="legends">Podstawowe</p>
+
             <label>ID przetargu: </label>
             <input type="text" />
             <br>
             <label>Słowa kluczowe: </label>
-            <input type="text" />
+            <textarea rows="1"></textarea>
             <br>
             <label>Miasto: </label>
             <input type="text" />
             <label>Organizator: </label>
             <input type="text" />
+        
         </fieldset>
+        
         <hr>
+        
         <fieldset>
-            <p>Zasięg terytorialny</p>
+            <p class="legends">Zasięg terytorialny</p>
             <label>Województwo: </label>
             <select name="wojewodztwo">
                 <option selected="selected">-- wybierz --</option>
@@ -35,10 +52,19 @@
                 <option>lubelskie</option>
                 <option>lubuskie</option>
             </select>
+            
+            <select multiple></select>
+            
+            <div class="buttons">
+                <a href="" class="btn-primary btn-xs">Dodaj >></a>
+                <a href="" class="btn-danger btn-xs"><< Usuń</a>
+            </div>
         </fieldset>
+        
         <hr>
+        
         <fieldset>
-            <p>Branże (możesz wybrać kilka)</p>
+            <p class="legends">Branże (możesz wybrać kilka)</p>
             <label>Branża: </label>
             <select name="branches">
                 <option selected="selected">-- wybierz --</option>
@@ -52,17 +78,30 @@
             <select name="subbranches">
                 <option selected="selected">-- wybierz --</option>
             </select>
+            
+            <select multiple></select>
+            
+            <div class="buttons">
+                <a href="" class="btn-primary btn-xs">Dodaj >></a>
+                <a href="" class="btn-danger btn-xs"><< Usuń</a>
+            </div>
         </fieldset>
+        
         <hr>
+        
         <fieldset>
-            <p>Inne</p>
+            <p class="legends">Inne</p>
             <label>Kod CPV: </label>
             <input type="text" />
             <br>
-            <label>Daya dodania od: </label>
+            <label>Data dodania od: </label>
             <input type="date" name="" value="" />
-            <label>do: </label>
+            <strong>do:</strong>
             <input type="date" name="" value="" />
+        </fieldset>
+        
+        <fieldset class="actions">
+            <button type="submit" class="btn-success btn-sm">Szukaj</button>
         </fieldset>
         
 
