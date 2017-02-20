@@ -40,6 +40,11 @@ and open the template in the editor.
     text-decoration: none
 }
 
+#advanced_search a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 #advanced_search .form-group {
     margin-right: 0px;
     margin-left: 0px
@@ -59,6 +64,10 @@ and open the template in the editor.
     padding-bottom: 10px;
     padding-top: 10px;
     float: none;
+}
+
+#advanced_search .itemSelected {
+    color: #b4b4b4;
 }
 
 #advanced_search p.legends {

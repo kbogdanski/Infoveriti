@@ -71,18 +71,6 @@ class PrzetargController extends Controller
     
 
     /**
-     * @Route("/wyszukiwarka")
-     * @Template()
-     */
-    public function searchAction(Request $req) {
-        //$task = $form->getData();
-
-        
-        return array();
-    }
-    
-
-    /**
      * @Route("/przetarg/{id}", requirements={"id"="\d+"})
      * @Template()
      */
@@ -100,6 +88,16 @@ class PrzetargController extends Controller
     }
     
     
+    /**
+     * @Route("/wyszukiwarka")
+     * @Template()
+     */
+    public function searchAction(Request $req) {
+        //$task = $form->getData();
+
+        
+        return array();
+    }
     
     
     /*PRIVATE FUNCTION - QUERY DQL*/
