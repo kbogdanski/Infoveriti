@@ -100,6 +100,8 @@ class PrzetargController extends Controller
     }
     
     
+    
+    
     /*PRIVATE FUNCTION - QUERY DQL*/
     private function getAuctiongByLocation($location) {
         $rep = $this->getDoctrine()->getRepository('AppBundle:Przetargi');    
