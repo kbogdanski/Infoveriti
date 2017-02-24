@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * PrzetargiPodbranze
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="przetargi_podbranze")
  * @ORM\Entity
  */
-class PrzetargiPodbranze
+class PrzetargiPodbranze implements JsonSerializable
 {
     /**
      * @var integer
@@ -36,10 +37,10 @@ class PrzetargiPodbranze
     private $podbranza;
     
     /**
-     * @ORM\ManyToOne(targetEntity="PrzetargiBranze", inversedBy="features")
+     * @ORM\ManyToOne(targetEntity="PrzetargiBranze", inversedBy="mojePodbranze")
      * @ORM\JoinColumn(name="branza_id", referencedColumnName="id")
      */
-    private $branza;
+    private $branza_id;
 
 
     /**
@@ -101,26 +102,35 @@ class PrzetargiPodbranze
     }
 
     /**
-     * Set branza
+     * Set branzaId
      *
-     * @param \AppBundle\Entity\PrzetargiBranze $branza
+     * @param \AppBundle\Entity\PrzetargiBranze $branzaId
      *
      * @return PrzetargiPodbranze
      */
-    public function setBranza(\AppBundle\Entity\PrzetargiBranze $branza = null)
+    public function setBranzaId(\AppBundle\Entity\PrzetargiBranze $branzaId = null)
     {
-        $this->branza = $branza;
+        $this->branza_id = $branzaId;
 
         return $this;
     }
 
     /**
-     * Get branza
+     * Get branzaId
      *
      * @return \AppBundle\Entity\PrzetargiBranze
      */
-    public function getBranza()
+    public function getBranzaId()
     {
-        return $this->branza;
+        return $this->branza_id;
     }
+
+    public function jsonSerialize() {
+        return array(
+            'id' => $this->id,
+            'cpv' => $this->cpv,
+            'podbranza' => $this->podbranza,
+                );
+    }
+
 }

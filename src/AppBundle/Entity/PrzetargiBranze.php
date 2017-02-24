@@ -36,9 +36,9 @@ class PrzetargiBranze
     private $branza;
     
     /**
-     * @ORM\OneToMany(targetEntity="PrzetargiPodbranze", mappedBy="branza")
+     * @ORM\OneToMany(targetEntity="PrzetargiPodbranze", mappedBy="branza_id")
      */
-    private $podbranze;
+    private $mojePodbranze;
 
 
     /**
@@ -103,40 +103,40 @@ class PrzetargiBranze
      */
     public function __construct()
     {
-        $this->podbranze = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->mojePodbranze = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add podbranze
+     * Add mojePodbranze
      *
-     * @param \AppBundle\Entity\PrzetargiPodbranze $podbranze
+     * @param \AppBundle\Entity\PrzetargiPodbranze $mojePodbranze
      *
      * @return PrzetargiBranze
      */
-    public function addPodbranze(\AppBundle\Entity\PrzetargiPodbranze $podbranze)
+    public function addMojePodbranze(\AppBundle\Entity\PrzetargiPodbranze $mojePodbranze)
     {
-        $this->podbranze[] = $podbranze;
+        $this->mojePodbranze[] = $mojePodbranze;
 
         return $this;
     }
 
     /**
-     * Remove podbranze
+     * Remove mojePodbranze
      *
-     * @param \AppBundle\Entity\PrzetargiPodbranze $podbranze
+     * @param \AppBundle\Entity\PrzetargiPodbranze $mojePodbranze
      */
-    public function removePodbranze(\AppBundle\Entity\PrzetargiPodbranze $podbranze)
+    public function removeMojePodbranze(\AppBundle\Entity\PrzetargiPodbranze $mojePodbranze)
     {
-        $this->podbranze->removeElement($podbranze);
+        $this->mojePodbranze->removeElement($mojePodbranze);
     }
 
     /**
-     * Get podbranze
+     * Get mojePodbranze
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPodbranze()
+    public function getMojePodbranze()
     {
-        return $this->podbranze;
+        return $this->mojePodbranze;
     }
 }
