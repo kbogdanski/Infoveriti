@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block main_content %}
-    
+
     <div class="breadcrumbs">
         <a href="{{ path('homepage') }}">Strona główna</a>
         <span>/</span>
@@ -70,7 +70,7 @@
         <hr>
         
         <fieldset>
-            <p class="legends">Zasięg terytorialny</p>
+            <p class="legends">Zasięg terytorialny (możesz wybrać kilka)</p>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="regions">Województwo</label>
                 <div class="col-md-6">
@@ -118,19 +118,18 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="branches">Branża</label>
                 <div class="col-md-9">
-                    <select id="" name="branches" class="form-control">
+                    <select id="branches" name="branches" class="form-control">
                         <option value="0">-- wybierz --</option>
-                        <option value="1">branza 1</option>
-                        <option value="2">branza 2</option>
-                        <option value="3">branza 3</option>
-                        <option value="4">branza 4</option>
+                        {% for branza in branze %}
+                            <option value="{{ branza.cpv }}" data-id="{{ branza.id }}">{{ branza.branza }}</option>
+                        {%endfor%}
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="subbranches">Podbranża</label>
                 <div class="col-md-9">
-                    <select id="" name="subbranches" class="form-control">
+                    <select id="subbranches" name="subbranches" class="form-control">
                         <option value="0">-- wybierz --</option>
                     </select>
                 </div>
@@ -138,18 +137,15 @@
             <div class="form-group">
                 <label class="col-md-3 control-label" for="">Wybrane</label>
                 <div class="col-md-9">
-                    <select id="" name="" class="form-control" size="4">
-                        <option value="1">wybrane 1</option>
-                        <option value="2">wybrane 2</option>
-                    </select>
+                    <select id="selected_branches" name="selected_branches" class="form-control" size="4"></select>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-md-3 control-label" for=""></label>
                 <div class="col-md-9">
-                    <button id="" name="" class="btn-primary btn-xs">Dodaj >></button>
-                    <button id="" name="" class="btn-danger btn-xs"><< Usuń</button>
+                    <a id="append_branch" name="append_branch" class="btn-primary btn-xs">Dodaj >></a>
+                    <a id="remove_branch" name="remove_branch" class="btn-danger btn-xs"><< Usuń</a>
                 </div>
             </div>
         </fieldset>

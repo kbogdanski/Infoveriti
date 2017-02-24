@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use AppBundle\Form\Type\SimpleSearchType;
-use AppBundle\Form\Type\AdvancedSearchType;
 
 class PrzetargController extends Controller
 {
@@ -92,13 +92,28 @@ class PrzetargController extends Controller
      * @Route("/wyszukiwarka")
      * @Template()
      */
-    public function searchAction(Request $req) {
+    public function searchAction() {
         //$task = $form->getData();
-
+        $repBranze = $this->getDoctrine()->getRepository('AppBundle:PrzetargiBranze');
+        $branze = $repBranze->findAll();
         
-        return array();
+        return array('branze' => $branze);
     }
     
+    /**
+     * @Route("/getSubbranches")
+     * @Template()
+     */
+    public function getSubbranchesAction(Request $req) {
+        $branza_id = $req->request->get('branche_id');
+        
+        $repPodbranze = $this->getDoctrine()->getRepository('AppBundle:PrzetargiPodbranze');
+        $podbranze = $repPodbranze->findBy(array('branza_id' => $branza_id));
+        
+        $podbranzeJSON = json_encode($podbranze);
+        
+        return new JsonResponse(array($podbranzeJSON));
+    }
     
     
     
