@@ -1,0 +1,54 @@
+{# empty Twig template #}
+{% extends 'base.html.twig' %}
+
+{% block main_content %}
+Test
+{{ dump(result) }}
+
+
+{% for key, val in result[0].przetargId %}
+    {{ key }} : {{ val }}
+{% endfor %}
+
+
+Wynikiem są objekty z tabeli PrzetargiEkstrasShortKrs ktora przeszukano po slowie kluczowym a w atrybucie przetargId siedzi obiejt encji Przetarg<br>
+Ponizej dane z tego obiektu dla pierwszego z wyników PrzetargiEkstrasShortKrs (indekx 0)<br>
+{{result[0].przetargId.id}}<br>
+{{result[0].przetargId.zp}}<br>
+{{result[0].przetargId.pozycja}}<br>
+{{result[0].przetargId.nazwa}}<br>
+{{result[0].przetargId.ulica}}<br>
+{{result[0].przetargId.miejscowosc}}<br>
+{{result[0].przetargId.wojewodztwo}}<br>
+{{result[0].przetargId.regon}}<br>
+
+
+{{ dump(result2) }}
+{{result2[0].przetargId.id}}<br>
+{{result2[0].przetargId.zp}}<br>
+{{result2[0].przetargId.pozycja}}<br>
+{{result2[0].przetargId.nazwa}}<br>
+{{result2[0].przetargId.ulica}}<br>
+{{result2[0].przetargId.miejscowosc}}<br>
+{{result2[0].przetargId.wojewodztwo}}<br>
+{{result2[0].przetargId.regon}}<br>
+<br>
+{{result2[1].przetargId.id}}<br>
+{{result2[1].przetargId.zp}}<br>
+{{result2[1].przetargId.pozycja}}<br>
+{{result2[1].przetargId.nazwa}}<br>
+{{result2[1].przetargId.ulica}}<br>
+{{result2[1].przetargId.miejscowosc}}<br>
+{{result2[1].przetargId.wojewodztwo}}<br>
+{{result2[1].przetargId.regon}}<br>
+<br>
+{{result2[2].przetargId.id}}<br>
+{{result2[2].przetargId.zp}}<br>
+{{result2[2].przetargId.pozycja}}<br>
+{{result2[2].przetargId.nazwa}}<br>
+{{result2[2].przetargId.ulica}}<br>
+{{result2[2].przetargId.miejscowosc}}<br>
+{{result2[2].przetargId.wojewodztwo}}<br>
+{{result2[2].przetargId.regon}}<br>
+
+{% endblock %}
