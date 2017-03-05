@@ -15,12 +15,15 @@ class PrzetargiExtrasShortkrs
     /**
      * @var integer
      *
-     * @ORM\Column(name="przetarg_id", type="bigint", nullable=false)
+     * //@ORM\JoinColumn(name="przetarg_id", type="bigint", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * 
+     * @ORM\OneToOne(targetEntity="Przetargi", inversedBy="przetargiExtrasShortkrs")
+     * @ORM\JoinColumn(name="przetarg_id", referencedColumnName="id")
      */
     private $przetargId;
-
+    
     /**
      * @var string
      *
@@ -150,7 +153,7 @@ class PrzetargiExtrasShortkrs
     /**
      * Get przetargId
      *
-     * @return integer
+     * @return \AppBundle\Entity\Przetargi
      */
     public function getPrzetargId()
     {

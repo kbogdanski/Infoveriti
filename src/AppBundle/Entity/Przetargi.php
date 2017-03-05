@@ -20,7 +20,7 @@ class Przetargi
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
+    
     /**
      * @var string
      *
@@ -133,6 +133,15 @@ class Przetargi
      */
     private $www;
 
+    /**
+     * @ORM\OneToOne(targetEntity="PrzetargiExtrasShortkrs", mappedBy="przetargId")
+     */
+    private $przetargiExtrasShortkrs;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PrzetargiCpv", mappedBy="przetargId")
+     */
+    private $przetargiCpv;
 
 
     /**
@@ -527,5 +536,72 @@ class Przetargi
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set przetargiExtrasShortkrs
+     *
+     * @param \AppBundle\Entity\PrzetargiExtrasShortkrs $przetargiExtrasShortkrs
+     *
+     * @return Przetargi
+     */
+    public function setPrzetargiExtrasShortkrs(\AppBundle\Entity\PrzetargiExtrasShortkrs $przetargiExtrasShortkrs = null)
+    {
+        $this->przetargiExtrasShortkrs = $przetargiExtrasShortkrs;
+
+        return $this;
+    }
+
+    /**
+     * Get przetargiExtrasShortkrs
+     *
+     * @return \AppBundle\Entity\PrzetargiExtrasShortkrs
+     */
+    public function getPrzetargiExtrasShortkrs()
+    {
+        return $this->przetargiExtrasShortkrs;
+    }
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->przetargiExtrasShortkrs = new PrzetargiExtrasShortkrs();
+        $this->przetargiCpv = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add przetargiCpv
+     *
+     * @param \AppBundle\Entity\PrzetargiCpv $przetargiCpv
+     *
+     * @return Przetargi
+     */
+    public function addPrzetargiCpv(\AppBundle\Entity\PrzetargiCpv $przetargiCpv)
+    {
+        $this->przetargiCpv[] = $przetargiCpv;
+
+        return $this;
+    }
+
+    /**
+     * Remove przetargiCpv
+     *
+     * @param \AppBundle\Entity\PrzetargiCpv $przetargiCpv
+     */
+    public function removePrzetargiCpv(\AppBundle\Entity\PrzetargiCpv $przetargiCpv)
+    {
+        $this->przetargiCpv->removeElement($przetargiCpv);
+    }
+
+    /**
+     * Get przetargiCpv
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPrzetargiCpv()
+    {
+        return $this->przetargiCpv;
     }
 }

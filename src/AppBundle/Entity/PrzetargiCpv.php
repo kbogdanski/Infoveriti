@@ -11,38 +11,42 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  */
 class PrzetargiCpv
-{
+{   
     /**
      * @var integer
      *
-     * @ORM\Column(name="przetarg_id", type="bigint", nullable=false)
+     * //@ORM\Column(name="przetarg_id", type="bigint", nullable=false)
+     * @ORM\Id
+     * 
+     * @ORM\ManyToOne(targetEntity="Przetargi", inversedBy="przetargiCpv")
+     * @ORM\JoinColumn(name="przetarg_id", referencedColumnName="id")
      */
     private $przetargId;
 
     /**
      * @var integer
-     *
+     * @ORM\Id
      * @ORM\Column(name="part_id", type="bigint", nullable=true)
      */
     private $partId;
 
     /**
      * @var string
-     *
+     * @ORM\Id
      * @ORM\Column(name="cpv", type="string", length=24, nullable=false)
      */
     private $cpv = '';
 
     /**
      * @var integer
-     *
+     * @ORM\Id
      * @ORM\Column(name="inx", type="integer", nullable=false)
      */
     private $inx = '0';
 
     /**
      * @var integer
-     *
+     * @ORM\Id
      * @ORM\Column(name="_cpv", type="bigint", nullable=true)
      */
     private $_cpv;
@@ -52,11 +56,10 @@ class PrzetargiCpv
     /**
      * Set przetargId
      *
-     * @param integer $przetargId
-     *
+     * @param \AppBundle\Entity\Przetargi $przetargId
      * @return PrzetargiCpv
      */
-    public function setPrzetargId($przetargId)
+    public function setPrzetargId(\AppBundle\Entity\Przetargi $przetargId = null)
     {
         $this->przetargId = $przetargId;
 
@@ -66,7 +69,7 @@ class PrzetargiCpv
     /**
      * Get przetargId
      *
-     * @return integer
+     * @return \AppBundle\Entity\Przetargi
      */
     public function getPrzetargId()
     {
