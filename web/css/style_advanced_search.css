@@ -8,20 +8,6 @@ and open the template in the editor.
     Author     : kbogdanski
 */
 
-.breadcrumbs {
-    padding-bottom: 16px;
-    font-size: 10px
-}
-
-.breadcrumbs a {
-    color: #20587b;
-    text-decoration: none
-}
-
-.breadcrumbs span {
-    color: #c71414;
-}
-
 /*#advanced_search label {
     width: 140px;
     font-size: 12px;

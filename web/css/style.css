@@ -63,6 +63,20 @@ input[type=text], input[type=password], textarea {
     -ms-transition:all 1.3s ease 0s
 }
 
+.breadcrumbs {
+    padding-bottom: 16px;
+    font-size: 10px
+}
+
+.breadcrumbs a {
+    color: #20587b;
+    text-decoration: none
+}
+
+.breadcrumbs span {
+    color: #c71414;
+}
+
 .header {
     
 }
