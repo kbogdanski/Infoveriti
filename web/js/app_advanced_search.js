@@ -9,6 +9,7 @@ $(document).ready(function(){
     var subbranches = $('#subbranches');
     var selectedRegions = $('#selected_regions');
     var selectedBranches = $('#selected_branches');
+    var advancedSearchForm = $('#advanced_search');
     
     var loadSubbranches = function (subbranchesList) {
         subbranches.empty();
@@ -114,6 +115,26 @@ $(document).ready(function(){
                 deleteBranch.remove();
             }
         }
+    });
+    
+    advancedSearchForm.on('submit', function(event) {
+       var selectedRegionsChildren = selectedRegions.children();
+       var selectedBranchesChildren = selectedBranches.children();
+       var hiddenSelectedRegions = $('#hidden_selected_regions');
+       var hiddenSelectedBranches = $('#hidden_selected_branches');
+       
+       var regionString = '';
+       var brancheString = '';
+       
+       for (i=0; i<selectedRegionsChildren.length; i++) {
+           regionString = regionString + selectedRegionsChildren.eq(i).val() + ';';
+       }
+       hiddenSelectedRegions.val(regionString.substr(0,regionString.length-1));
+       
+       for (i=0; i<selectedBranchesChildren.length; i++) {
+           brancheString = brancheString + selectedBranchesChildren.eq(i).val() + ';';
+       }
+       hiddenSelectedBranches.val(brancheString.substr(0,brancheString.length-1));
     });
    
     
