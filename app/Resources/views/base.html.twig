@@ -62,8 +62,8 @@
                 <div class="main_menu_area">
                     <ul id="nav">
                       <li><a href="{{ path('homepage') }}">HOME</a></li>
-                      <li><a href="#">Menu 1</a></li>
-                      <li><a href="#">Menu 2</a>
+                      <li><a href="{{ url('app_przetarg_test') }}">Menu 1</a></li>
+                      <li><a href="{{ url('app_przetarg_test2') }}">Menu 2</a>
                         <ul>
                           <li><a href="#">Menu 2.1</a></li>
                           <li><a href="#">Menu 2.2</a></li>
@@ -121,12 +121,17 @@
                     <div class="sidebar floatleft">
                         <div class="single_sidebar">
                             <div class="box">
-                                <h2 class="title">Statystyki</h2>
-                                <p>Dziś dodane</p>
-                                <p>Aktualne</p>
-                                <p>Wszystkie</p>
+                                {% block statistics %}
+                                    <h2 class="title">Statystyki</h2>
+                                    <p>Dziś dodane</p>
+                                    <p>Aktualne</p>
+                                    <p>Wszystkie</p>
+                                {% endblock %}
                             </div>
                         </div>
+                            
+                        {% block set_filter %}{% endblock %}
+                            
                         <div class="single_sidebar">
                             <div class="box">
                                 <h2 class="title">Skontaktuj się z nami</h2>
