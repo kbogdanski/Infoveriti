@@ -20,7 +20,7 @@
     <h4>Wyszukiwarka</h4>
     <p class="title"></p>
     
-    <form id="advanced_search" class="form-horizontal" action="" method="post">
+    <form id="advanced_search" class="form-horizontal" action="{{ path('app_przetarg_findauctions') }}" method="post">
         <fieldset class="search_type">
             <div class="form-group">
                 <label class="col-md-3 control-label" for="radios">Zakres wyszukiwania</label>
@@ -42,27 +42,27 @@
         <fieldset>
             <p class="legends">Podstawowe</p>
             <div class="form-group">
-                <label class="col-md-3 control-label" for="">ID przetargu</label>  
+                <label class="col-md-3 control-label" for="id_auction">ID przetargu</label>  
                 <div class="col-md-4">
-                    <input id="" name="" type="text" class="form-control input-sm"> 
+                    <input id="" name="id_auction" type="text" class="form-control input-sm"> 
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3 control-label" for="">Słowa kluczowe</label>  
+                <label class="col-md-3 control-label" for="key_word">Słowa kluczowe</label>  
                 <div class="col-md-9">
-                    <input id="" name="" type="text" class="form-control input-sm"> 
+                    <input id="" name="key_word" type="text" class="form-control input-sm"> 
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3 control-label" for="">Miasto</label>  
+                <label class="col-md-3 control-label" for="city">Miasto</label>  
                 <div class="col-md-4">
-                    <input id="" name="" type="text" class="form-control input-sm"> 
+                    <input id="" name="city" type="text" class="form-control input-sm"> 
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3 control-label" for="">Organizator</label>  
+                <label class="col-md-3 control-label" for="organiser">Organizator</label>  
                 <div class="col-md-4">
-                    <input id="" name="" type="text" class="form-control input-sm"> 
+                    <input id="" name="organiser" type="text" class="form-control input-sm"> 
                 </div>
             </div>  
         </fieldset>
@@ -100,6 +100,7 @@
                 <div class="col-md-6">
                     <select id="selected_regions" name="selected_regions" class="form-control" size="4"></select>
                 </div>
+                <input type="hidden" id="hidden_selected_regions" name="regions_string" value="" />
             </div>
             
             <div class="form-group">
@@ -139,6 +140,7 @@
                 <div class="col-md-9">
                     <select id="selected_branches" name="selected_branches" class="form-control" size="4"></select>
                 </div>
+                <input type="hidden" id="hidden_selected_branches" name="branches_string" value="" />
             </div>
 
             <div class="form-group">
@@ -155,21 +157,32 @@
         <fieldset>
             <p class="legends">Inne</p>
             <div class="form-group">
-                <label class="col-md-3 control-label" for="">Kod CPV</label>  
+                <label class="col-md-3 control-label" for="cpv">Kod CPV</label>  
                 <div class="col-md-4">
-                    <input id="" name="" type="text" class="form-control input-sm"> 
+                    <input id="" name="cpv" type="text" class="form-control input-sm"> 
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3 control-label" for="">Data dodania od</label>  
+                <label class="col-md-3 control-label" for="date_added_from">Data dodania od</label>  
                 <div class="col-md-4">
-                    <input id="" name="" type="date" class="form-control"> 
+                    <input id="" name="date_added_from" type="date" class="form-control"> 
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3 control-label" for="">Data dodania do</label>  
+                <label class="col-md-3 control-label" for="date_added_to">Data dodania do</label>  
                 <div class="col-md-4">
-                    <input id="" name="" type="date" class="form-control"> 
+                    <input id="" name="date_added_to" type="date" class="form-control"> 
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-8"></div>
+                <label class="col-md-2 control-label" for="items_see">Pokaż max</label>  
+                <div class="col-md-2">
+                    <select id="items_see" name="items_see" class="form-control">
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
                 </div>
             </div>
         </fieldset>
@@ -179,7 +192,7 @@
         <fieldset class="actions">
             <div class="form-group">
                 <div class="col-md-12">
-                    <button id="" name="" class="btn-success btn-sm">Szukaj</button>
+                    <button type="submit" id="advanced_search_button" name="advanced_search_button" class="btn-success btn-sm">Szukaj</button>
                 </div>
             </div>
         </fieldset>
