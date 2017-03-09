@@ -29,8 +29,25 @@ class PrzetargiRepository extends EntityRepository {
                 ORDER BY p.dataPublikacji DESC");
         return $result;
     }
+    
+    public function getBySimpleSearch($keyWord, $location) {         
+        if ($keyWord !== NULL && $location !== NULL) {
+            $result = $this->getAuctiongByKeyWordAndLocation($keyWord, $location);
+            return $result;
+        } else {
+            if ($location !== NULL) {
+                $result = $this->getAuctiongByLocation($location);
+                return $result;
+            }
+            if ($keyWord !== NULL) {
+                $result = $this->getAuctiongByKeyWord($keyWord);
+                return $result;
+            }
+        }
+        return 0;
+    }
 
-        public function getAuctiongByLocation($location) {
+    public function getAuctiongByLocation($location) {
         $result = $this->getEntityManager()->createQuery(
             "SELECT p
             FROM AppBundle:Przetargi p WHERE
@@ -68,7 +85,7 @@ class PrzetargiRepository extends EntityRepository {
         return $result;
     }
     
-    public function getByAdvancedSearch ($status, $idAuction, $keyWord, $city, $organiser, $regions, $branches, $cpv, $dataAddedFrom, $dataAddedTo) {
+    public function getByAdvancedSearch($status, $idAuction, $keyWord, $city, $organiser, $regions, $branches, $cpv, $dataAddedFrom, $dataAddedTo) {
         $query = "SELECT p, pes, pcpv FROM AppBundle:Przetargi p JOIN p.przetargiExtrasShortkrs pes JOIN p.przetargiCpv pcpv ";
         $query = $query.  $this->checkStatus($status);
         $query = $query.  $this->checkIdAuction($idAuction);

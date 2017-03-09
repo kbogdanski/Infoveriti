@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use AppBundle\Form\Type\SimpleSearchType;
 
-use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class PrzetargController extends Controller {
     
@@ -18,55 +17,23 @@ class PrzetargController extends Controller {
      * @Template()
      */
     public function indexAction(Request $req) {
-        if ($req->getMethod() === 'GET') {
-            $rep = $this->getDoctrine()->getRepository('AppBundle:Przetargi');
-            $przetargi = $rep->findBy(array(), ['dataPublikacji' => 'DESC']);
+        $rep = $this->getDoctrine()->getRepository('AppBundle:Przetargi');
+        $przetargi = $rep->findBy(array(), ['dataPublikacji' => 'DESC']);
 
-            /**
-             * @var $pagination \Knp\Component\Pager\Pagination
-             */
-            $pagination = $this->get('knp_paginator');
-            $przetargiToDisplay = $pagination->paginate(
-                    $przetargi,
-                    $req->query->getInt('page',1),
-                    20
-                    );
+        /**
+         * @var $pagination \Knp\Component\Pager\Pagination
+         */
+        $pagination = $this->get('knp_paginator');
+        $przetargiToDisplay = $pagination->paginate(
+                $przetargi,
+                $req->query->getInt('page',1),
+                20
+                );
 
-            $form = $this->createForm(new SimpleSearchType());
-            return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView()) ;
-        }
-        
-        if ($req->getMethod() === 'POST') {
-            $form = $this->createForm(new SimpleSearchType());
-            $form->handleRequest($req);
-            
-            /**
-             * @var $p \Knp\Component\Pager\Pagination
-             */
-            $pagination = $this->get('knp_paginator');
-
-            if ($form->isSubmitted() && $form->isValid()) {
-                $dataForm = $form->getData();
-                $repPrzetargi = $this->getDoctrine()->getRepository('AppBundle:Przetargi');
-                if ($dataForm['keyWord'] !== NULL && $dataForm['location'] !== NULL) {
-                    $przetargiByKeyWordAndLocation = $repPrzetargi->getAuctiongByKeyWordAndLocation($dataForm['keyWord'], $dataForm['location']);
-                    $przetargiToDisplay = $pagination->paginate($przetargiByKeyWordAndLocation, $req->query->getInt('page',1), 20);
-                    return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView());
-                } else {
-                    if ($dataForm['location'] !== NULL) {
-                        $przetargiByLocation = $repPrzetargi->getAuctiongByLocation($dataForm['location']);
-                        $przetargiToDisplay = $pagination->paginate($przetargiByLocation, $req->query->getInt('page',1), 20);
-                        return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView());
-                    }
-                    if ($dataForm['keyWord'] !== NULL) {
-                        $przetargiByKeyWord = $repPrzetargi->getAuctiongByKeyWord($dataForm['keyWord']);
-                        $przetargiToDisplay = $pagination->paginate($przetargiByKeyWord, $req->query->getInt('page',1), 20);
-                        return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView());
-                    }
-                }
-                return $this->redirectToRoute('homepage');
-            }
-        }
+        $form = $this->createForm(new SimpleSearchType(), array(
+            'action' => $this->generateUrl('app_przetarg_simplesearch')
+        ));
+        return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView());  
     }
     
     
@@ -89,7 +56,7 @@ class PrzetargController extends Controller {
                 );
 
         $form = $this->createForm(new SimpleSearchType());
-        return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView()) ;
+        return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView());
     }
     
     
@@ -112,7 +79,27 @@ class PrzetargController extends Controller {
                 );
 
         $form = $this->createForm(new SimpleSearchType());
-        return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView()) ;
+        return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView());
+    }
+    
+    
+    /**
+     * @Route("/wyniki-szybkiego-wyszukiwania")
+     * @Template()
+     */
+    public function simpleSearchAction(Request $req) {
+        $form = $this->createForm(new SimpleSearchType());
+        $form->handleRequest($req);
+        $dataForm = $form->getData();
+        $repPrzetargi = $this->getDoctrine()->getRepository('AppBundle:Przetargi');
+
+        $przetargiToDisplay = $repPrzetargi->getBySimpleSearch($dataForm['keyWord'], $dataForm['location']);
+        
+        if ($przetargiToDisplay === 0) {
+            return $this->redirectToRoute('homepage');
+        }
+        
+        return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView());
     }
 
     
