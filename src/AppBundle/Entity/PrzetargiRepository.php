@@ -12,7 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class PrzetargiRepository extends EntityRepository {
     
-    public function getAuctiongByLocation($location) {
+    public function getAllCurrentAuctions() {
+        $result = $this->getEntityManager()->createQuery(
+                "SELECT p
+                FROM AppBundle:Przetargi p 
+                WHERE p.zp <> 'ZP-403'
+                ORDER BY p.dataPublikacji DESC");
+        return $result;
+    }
+    
+    public function getAllEndAuctions() {
+        $result = $this->getEntityManager()->createQuery(
+                "SELECT p
+                FROM AppBundle:Przetargi p 
+                WHERE p.zp = 'ZP-403'
+                ORDER BY p.dataPublikacji DESC");
+        return $result;
+    }
+
+        public function getAuctiongByLocation($location) {
         $result = $this->getEntityManager()->createQuery(
             "SELECT p
             FROM AppBundle:Przetargi p WHERE

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block search_form %}
+    <div class="search_form">
+        <h2>Baza Zamówień Przetargowych</h2>
+        <p>Skorzystaj z wyszukiwarki</p>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
+            {{ form_widget(form.keyWord, { 'attr': { 'placeholder' : 'Słowa kluczowe np. gazownictwo' } }) }}
+            {{ form_widget(form.location, { 'attr': { 'placeholder' : 'Lokalizacja miasto/powiat/województwo' } }) }}
+            {{ form_widget(form.search_buttom) }}
+        {{ form_end(form) }}
+        <p><a href="{{ url('app_przetarg_search') }}">Wyszukiwanie zaawansowane</a></p> 
+    </div>
+{% endblock %}
+
+{% block main_content %}
+    
+    <div class="breadcrumbs">
+        <a href="{{ path('homepage') }}">Strona główna</a>
+        <span>/</span>
+        Przetargi aktualne
+    </div>
+    <h4>Przetargi aktualne</h4>
+    <p class="title"></p>
+    
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Data publikacji</th>
+                  <th>Województwo</th>
+                  <th>Zamawiający</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for przetarg in przetargi %}
+                    <tr>
+                        <td><a href="{{ url('app_przetarg_przetarg', {'id': przetarg.id}) }}">{{ przetarg.id }}</a></td>
+                        <td>{{ przetarg.dataPublikacji | date("d-m-Y") }}</td>
+                        <td>{{ przetarg.wojewodztwo }}</td>
+                        <td>{{ przetarg.nazwa | slice(0, 30) }}...</td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        <div class="navigation text-center">
+            {{ knp_pagination_render(przetargi) }}
+        </div>
+    </div>
+    
+{% endblock %}

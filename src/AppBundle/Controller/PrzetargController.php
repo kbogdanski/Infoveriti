@@ -23,7 +23,7 @@ class PrzetargController extends Controller {
             $przetargi = $rep->findBy(array(), ['dataPublikacji' => 'DESC']);
 
             /**
-             * @var $p \Knp\Component\Pager\Pagination
+             * @var $pagination \Knp\Component\Pager\Pagination
              */
             $pagination = $this->get('knp_paginator');
             $przetargiToDisplay = $pagination->paginate(
@@ -69,12 +69,58 @@ class PrzetargController extends Controller {
         }
     }
     
+    
+    /**
+     * @Route("/aktualne-przetargi")
+     * @Template()
+     */
+    public function allCurrentAuctionsAction(Request $req) {
+        $rep = $this->getDoctrine()->getRepository('AppBundle:Przetargi');
+        $currentPrzetargi = $rep->getAllCurrentAuctions();
+        
+        /**
+         * @var $pagination \Knp\Component\Pager\Pagination
+         */
+        $pagination = $this->get('knp_paginator');
+        $przetargiToDisplay = $pagination->paginate(
+                $currentPrzetargi,
+                $req->query->getInt('page',1),
+                20
+                );
 
+        $form = $this->createForm(new SimpleSearchType());
+        return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView()) ;
+    }
+    
+    
+    /**
+     * @Route("/zakonczone-przetargi")
+     * @Template()
+     */
+    public function allEndAuctionsAction(Request $req) {
+        $rep = $this->getDoctrine()->getRepository('AppBundle:Przetargi');
+        $endPrzetargi = $rep->getAllEndAuctions();
+        
+        /**
+         * @var $pagination \Knp\Component\Pager\Pagination
+         */
+        $pagination = $this->get('knp_paginator');
+        $przetargiToDisplay = $pagination->paginate(
+                $endPrzetargi,
+                $req->query->getInt('page',1),
+                20
+                );
+
+        $form = $this->createForm(new SimpleSearchType());
+        return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView()) ;
+    }
+
+    
     /**
      * @Route("/przetarg/{id}", requirements={"id"="\d+"})
      * @Template()
      */
-    public function przetargAction (Request $req, $id) {
+    public function przetargAction(Request $req, $id) {
         $repPrzetargi = $this->getDoctrine()->getRepository('AppBundle:Przetargi');
         $przetarg = $repPrzetargi->findOneBy(array('id' => $id));
         
