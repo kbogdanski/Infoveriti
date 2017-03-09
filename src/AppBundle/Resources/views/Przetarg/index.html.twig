@@ -15,7 +15,14 @@
 
 {% block main_content %}
     
-    <h2>Tablica z wynikami</h2>
+    <div class="breadcrumbs">Strona główna</div>
+    
+    <a href="{{ path('app_przetarg_allcurrentauctions') }}" class="btn btn-primary">Pokaż wszystkie aktualne przetargi</a>
+    <a href="{{ path('app_przetarg_allendauctions') }}" class="btn btn-primary">Pokaż wszystkie zakończone przetargi</a>
+    
+    <h4>Najnowsze ogłoszenia z dnia dzisiejszego</h4>
+    <p class="title"></p>
+    
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
             <thead>
