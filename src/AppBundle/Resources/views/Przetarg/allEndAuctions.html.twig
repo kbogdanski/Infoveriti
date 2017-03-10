@@ -4,7 +4,7 @@
     <div class="search_form">
         <h2>Baza Zamówień Przetargowych</h2>
         <p>Skorzystaj z wyszukiwarki</p>
-        {{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
+        {{ form_start(form, {'action': path('app_przetarg_simplesearch'), 'attr': {'novalidate': 'novalidate'} }) }}
             {{ form_widget(form.keyWord, { 'attr': { 'placeholder' : 'Słowa kluczowe np. gazownictwo' } }) }}
             {{ form_widget(form.location, { 'attr': { 'placeholder' : 'Lokalizacja miasto/powiat/województwo' } }) }}
             {{ form_widget(form.search_buttom) }}

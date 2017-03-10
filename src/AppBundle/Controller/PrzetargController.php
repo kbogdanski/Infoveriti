@@ -55,7 +55,9 @@ class PrzetargController extends Controller {
                 20
                 );
 
-        $form = $this->createForm(new SimpleSearchType());
+        $form = $this->createForm(new SimpleSearchType(), array(
+            'action' => $this->generateUrl('app_przetarg_simplesearch')
+        ));
         return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView());
     }
     
@@ -78,7 +80,9 @@ class PrzetargController extends Controller {
                 20
                 );
 
-        $form = $this->createForm(new SimpleSearchType());
+        $form = $this->createForm(new SimpleSearchType(), array(
+            'action' => $this->generateUrl('app_przetarg_simplesearch')
+        ));
         return array('przetargi' => $przetargiToDisplay, 'form' => $form->createView());
     }
     
