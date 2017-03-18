@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use AppBundle\Form\Type\SimpleSearchType;
 
+/*Jestes na branchu loging*/
 
 class PrzetargController extends Controller {
     
