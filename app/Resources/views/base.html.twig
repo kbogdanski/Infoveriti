@@ -44,14 +44,8 @@
                             </ul>
                         </div>
                         <div class="login">
-                          <form action="#" method="post" id="login_form">
-                            <input type="text" placeholder="Podaj login" id="l" />
-                            <input type="text" placeholder="Podaj hasło" id="p" />
-                            <input type="submit" id="loginbuttom" value="Zaloguj" />
-                            <input type="button" id="rejbuttom" value="Zarejestruj" />
-                            <input type="checkbox" value="true" />Zapamiętaj mnie
-                            <input type="hidden" value="post" name="post_type" />
-                          </form>
+                            <a href="{{ path('fos_user_security_login') }}" id="loginbuttom">Zaloguj</a>
+                            <a href="{{ path('fos_user_registration_register') }}" id="rejbuttom">Zarejestruj</a>
                         <div>
                             <a>Zapomniałem hasła</a>
                         </div>
