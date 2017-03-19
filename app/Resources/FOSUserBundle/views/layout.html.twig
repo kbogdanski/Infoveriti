@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Baza Zamówień Przetargowych{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="Author" content="Kamil Bogdański" />
+        <meta name="Copyright" content="(c) 2017 Kamil Bogdański" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        
+        {% block stylesheets %}       
+            <link rel="stylesheet" type="text/css" href="{{ asset('font/font-awesome.min.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('font/font.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.bxslider.css') }}" />
+        {% endblock %}
+        
+        {% block javascripts %}          
+            <script type="text/javascript" src="{{ asset('js/jquery-min.js') }}"></script> 
+            <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script> 
+            <script type="text/javascript" src="{{ asset('js/jquery.bxslider.js') }}"></script> 
+            <script type="text/javascript" src="{{ asset('js/selectnav.min.js') }}"></script> 
+        {% endblock %}
+        
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    
+    <body>
+        <div class="body">
+            <div class="center">
+                <div class="header">
+                    <div class="logo floatleft">
+                        <a href=""><img src="{{ asset('img/logo.png') }}" /></a>
+                    </div>
+                    <div class="info_plus_login floatright">
+                        <div class="top_info">
+                            <ul>
+                                <li><a><img src="{{ asset('img/tel.png') }}" /><strong>111 111 111</strong></a></li>
+                                <li><a><img src="{{ asset('img/mail.png') }}" /><strong>test@test.pl</strong></a></li>
+                                <li><a><img src="{{ asset('img/info.png') }}" /><strong>Pomoc</strong></a></li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
+                
+                <div class="content">
+                    <div class="main_content floatright">
+                        {% block main_content %}
+                        {% endblock %}
+                    </div>   
+                </div>   
+            </div>
+        </div>   
+    </body>
+</html>
+

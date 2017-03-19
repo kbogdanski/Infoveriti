@@ -1,0 +1,14 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block main_content %}
+    
+    <div class="breadcrumbs">
+        <a href="{{ path('homepage') }}">Strona główna</a>
+        <span>/</span>
+        Logowanie
+    </div>
+        
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+    
+{% endblock %}
+
